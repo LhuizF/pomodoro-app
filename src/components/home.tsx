@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import useInterval from '../hooks/useInterval';
 import PomodoroTimer from './pomodoroTimer';
 import Button from './button';
-import { secondsToMin, secondsToHours } from '../utils/getTimer';
+import { secondsToHours } from '../utils/getTimer';
 
 import bellStart from '../sounds/bell-start.mp3';
 import bellFinish from '../sounds/bell-finish.mp3';
@@ -119,31 +119,39 @@ export default function Home() {
                 <ul className="start-controls">
                     <li>
                         Tempo de trabalho:
-                        <input
-                            type="number"
-                            onChange={(e) => {
-                                setPomodoroTime(+e.target.value);
-                            }}
-                        />
+                        <div className="input-container">
+                            <input
+                                type="text"
+                                onChange={(e) => {
+                                    setPomodoroTime(+e.target.value);
+                                }}
+                            />
+                            min
+                        </div>
                     </li>
                     <li>
                         Tempo de descanso curto:
-                        <input
-                            type="number"
-                            onChange={(e) => {
-                                setRestTime(+e.target.value);
-                            }}
-                        />
+                        <div className="input-container">
+                            <input
+                                type="text"
+                                onChange={(e) => {
+                                    setRestTime(+e.target.value);
+                                }}
+                            />
+                            min
+                        </div>
                     </li>
                     <li>
                         Número de ciclos:
-                        <input
-                            type="number"
-                            value={cycles}
-                            onChange={(e) => {
-                                setCycles(+e.target.value);
-                            }}
-                        />
+                        <div className="input-container">
+                            <input
+                                type="text"
+                                value={cycles}
+                                onChange={(e) => {
+                                    setCycles(+e.target.value);
+                                }}
+                            />
+                        </div>
                     </li>
                 </ul>
             )}
@@ -151,7 +159,7 @@ export default function Home() {
             <div className="details">
                 <p>Ciclos concluídos: {completedCycles}</p>
                 <p>Horas trabalhadas: {secondsToHours(fullWorkingTime)}</p>
-                <p>Pomodoros Concluidos: {numberPomodoros}</p>
+                <p>Pomodoros concluídos: {numberPomodoros}</p>
             </div>
         </div>
     );

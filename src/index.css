@@ -81,7 +81,8 @@ body{
     flex-direction: column;
 }
 
-.start-controls li input {
-    max-width: 230px;
+.input-container input {
     font-size: 16px;
+    max-width: 230px;
+    margin-right: 5px;
 }
